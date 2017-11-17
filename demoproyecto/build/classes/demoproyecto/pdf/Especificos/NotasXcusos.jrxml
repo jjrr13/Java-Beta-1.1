@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0737ca86-8de1-48f7-ad7f-3848b36a7e57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod_curso" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT est.codEst, est.nomEst, mat.nota FROM estudiantes as est
+                INNER JOIN matriculas as mat ON mat.codEst=est.codEst
+                INNER JOIN cursos as cur ON cur.codCurso=mat.codCurso
+                    WHERE mat.codEst=est.codEst and cur.codCurso=$P{cod_curso}]]>
+	</queryString>
+	<field name="codEst" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomEst" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="149" y="10" width="203" height="41" uuid="b966f351-9003-4212-adee-f8c08d9b9b5e"/>
+				<textElement>
+					<font fontName="Papyrus" size="24"/>
+				</textElement>
+				<text><![CDATA[Notas del Curso ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="10" width="137" height="42" uuid="0fd2078c-1481-46a7-8324-e416838cf759"/>
+				<textElement>
+					<font fontName="Monotype Corsiva" size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cod_curso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="10" width="146" height="27" uuid="e7c1a75a-f60c-494b-821d-17c52d7fa76f"/>
+				<textElement>
+					<font fontName="Papyrus" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Alumno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="10" width="100" height="27" uuid="90420e50-1287-4f1e-8e14-86daff3333a8"/>
+				<textElement>
+					<font fontName="Papyrus" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="10" width="100" height="27" uuid="24ed4f3b-cf40-42b3-a06f-f8094df14786"/>
+				<textElement>
+					<font fontName="Papyrus" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="63" y="13" width="100" height="20" uuid="87ef8f1d-8958-445e-8e42-5966e6e1ee24"/>
+				<textElement>
+					<font fontName="Monotype Corsiva" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codEst}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="13" width="100" height="20" uuid="a52f6208-ad16-4ac5-b5a0-aa4705bfbb97"/>
+				<textElement>
+					<font fontName="Monotype Corsiva" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomEst}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="13" width="100" height="20" uuid="b1de15be-42c2-40a6-9578-8745969bb462"/>
+				<textElement>
+					<font fontName="Monotype Corsiva" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
